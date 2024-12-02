@@ -35,7 +35,8 @@ void Logger::print(const LogLevel &desired_level, const std::string &string) {
   if (desired_level < log_level_)
     return;
 
-  time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+  auto now = std::chrono::system_clock::to_time_t(
+      std::chrono::system_clock::now());
   auto timestamp = std::put_time(std::localtime(&now), "%T"); // HR:MIN:SEC
 
   *output_stream_ << "[" << timestamp << "] " 
